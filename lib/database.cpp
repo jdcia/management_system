@@ -1,8 +1,13 @@
 #include "../headers/database.h"
 
 //construct user
-database::database(string path){
-    return;
+database::database(char *path){
+    int res = sqlite3_open(path, &db);
+
+    if(res){
+        cout << "error can't connect to db\n";
+        exit(1);
+    }
 }
 
 
@@ -17,6 +22,6 @@ int database::auth_user(string username, string password){
 
 //destructor
 database::~database(){
-
+    sqlite3_close(db);
     return;
 }

@@ -4,11 +4,10 @@
 #include <string>
 #include <stdlib.h>
 #include <stdio.h>
+#include <sqlite3.h>
+#include <iostream>
 
 using namespace std;
-
-
-
 
 class database {
 
@@ -16,7 +15,7 @@ class database {
 
         //constructor
 
-        database(string path);
+        database(char * path);
 
         //checks to see if user exists;
 
@@ -31,7 +30,8 @@ class database {
 
 
     private:
-
+    
+        sqlite3 *db;
 
 };
 
