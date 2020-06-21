@@ -7,6 +7,10 @@
 #include <sqlite3.h>
 #include <iostream>
 
+#define MANAGER 2
+#define EMPLOYEE 1
+#define ERROR 0
+
 using namespace std;
 
 class database {
@@ -15,7 +19,7 @@ class database {
 
         //constructor
 
-        database(char * path);
+        database(string path);
 
         //checks to see if user exists;
 

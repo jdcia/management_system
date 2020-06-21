@@ -1,4 +1,4 @@
-#include "../headers/main.h"
+#include "./headers/main.h"
 
 int main(){
 
@@ -25,7 +25,8 @@ int main(){
 
         true_usr = db->auth_user(username, password);
 
-        if(!true_usr{
+        //check to see if valid user.
+        if(true_usr == ERROR){
             continue;
         }
 
