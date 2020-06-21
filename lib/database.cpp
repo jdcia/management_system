@@ -11,16 +11,38 @@ database::database(string path){
 }
 
 
+static int callback(void* data, int argc, char** argv, char** azColName) 
+{ 
+    int i; 
+    fprintf(stderr, "%s: ", (const char*)data); 
+  
+    for (i = 0; i < argc; i++) { 
+        printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL"); 
+    } 
+  
+    printf("\n"); 
+    return 0; 
+} 
+
 //checks to see if user exists;
 
-//0 if false
-//1 if employee
-//2 if manager
+//ERROR if false
+//EMPLOYEE if employee
+//MANAGER if manager
 int database::auth_user(string username, string password){
 
-    cout << username << "\n";
+    string sql = "select * from employee where username = \"" + username + "\" and password = \"" + password + "\"";
 
-    cout << password << "\n";
+    string data("CALLBACK FUNCTION"); 
+
+
+    int rc = sqlite3_exec(db, sql.c_str(), callback, (void*)data.c_str(), NULL); 
+  
+    if (rc != SQLITE_OK) 
+        cerr << "Error SELECT" << endl; 
+    else { 
+        cout << "Operation OK!" << endl; 
+    } 
 
     return 0;
 }
@@ -30,3 +52,4 @@ database::~database(){
     sqlite3_close(db);
     return;
 }
+
