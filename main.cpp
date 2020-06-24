@@ -1,4 +1,5 @@
 #include "./headers/main.h"
+#include "../headers/employee.h"
 
 int main(){
 
@@ -28,6 +29,12 @@ int main(){
         //check to see if valid user.
         if(true_usr == ERROR){
             continue;
+        }
+        else if(true_usr == EMPLOYEE){
+            
+        }
+        else if(true_usr == MANAGER){
+
         }
 
         //load userspace based on management level
