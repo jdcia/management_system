@@ -11,16 +11,27 @@ database::database(string path){
 }
 
 
-static int callback(void* data, int argc, char** argv, char** azColName) 
+int callback(void* data, int argc, char** argv, char** azColName) 
 { 
     int i; 
-    fprintf(stderr, "%s: ", (const char*)data); 
+
+    //cout << argc << " asdf\n";
   
-    for (i = 0; i < argc; i++) { 
-        printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL"); 
-    } 
+    // for (i = 0; i < argc; i++) { 
+    //     printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL"); 
+    // } 
+
+    // cout << "argc = " << argc << "\n";
+    // cout << "arg1 = " << argv[1] << "\n";
+    // cout << "arg2 = " << argv[2] << "\n";
+    if(argc > 3 && stoi(argv[1]) == stoi(argv[2])){
+        *(int *)data = MANAGER;
+    }
+    else if (argc > 3){
+        *(int *)data = EMPLOYEE;
+    }
   
-    printf("\n"); 
+    //printf("\n"); 
     return 0; 
 } 
 
@@ -33,16 +44,25 @@ int database::auth_user(string username, string password){
 
     string sql = "select * from employee where username = \"" + username + "\" and password = \"" + password + "\"";
 
-    string data("CALLBACK FUNCTION"); 
+    int data = ERROR;
 
-
-    int rc = sqlite3_exec(db, sql.c_str(), callback, (void*)data.c_str(), NULL); 
+    int rc = sqlite3_exec(db, sql.c_str(), callback, (void*)&data, NULL); 
   
     if (rc != SQLITE_OK) 
         cerr << "Error SELECT" << endl; 
     else { 
         cout << "Operation OK!" << endl; 
     } 
+
+    if(data == ERROR){
+        cout << "USER not found\n";
+    }
+    else if(data == EMPLOYEE){
+        cout << "Employee logged in\n";
+    }
+    else if(data == MANAGER){
+        cout << "Manager logged in\n";
+    }
 
     return 0;
 }

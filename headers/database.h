@@ -22,7 +22,6 @@ class database {
         database(string path);
 
         //checks to see if user exists;
-
         //0 if false
         //1 if employee
         //2 if manager
@@ -32,10 +31,11 @@ class database {
 
         ~database();
 
-
     private:
     
         sqlite3 *db;
+
+
 
 };
 
