@@ -24,13 +24,10 @@ int callback(void* data, int argc, char** argv, char** azColName)
     // cout << "argc = " << argc << "\n";
     // cout << "arg1 = " << argv[1] << "\n";
     // cout << "arg2 = " << argv[2] << "\n";
-    if(argc > 3 && stoi(argv[1]) == stoi(argv[2])){
-        *(int *)data = MANAGER;
+    if(argc > 4){
+        static_cast<employee *>(data)->load_info(argc, argv);
     }
-    else if (argc > 3){
-        *(int *)data = EMPLOYEE;
-    }
-  
+    
     //printf("\n"); 
     return 0; 
 } 
@@ -40,31 +37,18 @@ int callback(void* data, int argc, char** argv, char** azColName)
 //ERROR if false
 //EMPLOYEE if employee
 //MANAGER if manager
-int database::auth_user(string username, string password){
+employee *database::auth_user(string username, string password){
 
     string sql = "select * from employee where username = \"" + username + "\" and password = \"" + password + "\"";
 
-    int data = ERROR;
+    employee *data = new employee();
 
-    int rc = sqlite3_exec(db, sql.c_str(), callback, (void*)&data, NULL); 
+    int rc = sqlite3_exec(db, sql.c_str(), callback, (void*)data, NULL); 
   
     if (rc != SQLITE_OK) 
         cerr << "Error SELECT" << endl; 
-    else { 
-        cout << "Operation OK!" << endl; 
-    } 
 
-    if(data == ERROR){
-        cout << "USER not found\n";
-    }
-    else if(data == EMPLOYEE){
-        cout << "Employee logged in\n";
-    }
-    else if(data == MANAGER){
-        cout << "Manager logged in\n";
-    }
-
-    return 0;
+    return data;
 }
 
 //destructor

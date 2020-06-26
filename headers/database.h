@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <sqlite3.h>
 #include <iostream>
+#include "employee.h"
 
 #define MANAGER 2
 #define EMPLOYEE 1
@@ -25,7 +26,7 @@ class database {
         //0 if false
         //1 if employee
         //2 if manager
-        int auth_user(string username, string password); //checks if user exists
+        employee *auth_user(string username, string password); //checks if user exists
 
         //decontructor
 

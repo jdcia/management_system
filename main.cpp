@@ -1,5 +1,5 @@
 #include "./headers/main.h"
-#include "../headers/employee.h"
+#include "./headers/employee.h"
 
 int main(){
 
@@ -9,8 +9,6 @@ int main(){
     string username;
 
     string password;
-
-    bool true_usr;
 
     while(true){
         //authenticate
@@ -24,21 +22,15 @@ int main(){
 
         cin >> password;
 
-        true_usr = db->auth_user(username, password);
+        auto current_user = db->auth_user(username, password);
 
         //check to see if valid user.
-        if(true_usr == ERROR){
+        if(!current_user->is_valid){
             continue;
-        }
-        else if(true_usr == EMPLOYEE){
-            
-        }
-        else if(true_usr == MANAGER){
-
         }
 
         //load userspace based on management level
-
+        current_user->render();
         
         //exit
 
