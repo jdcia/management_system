@@ -48,14 +48,97 @@ void employee::load_info(int argc, char**argv){
 
 //will contain main loop and functions for employee login.
 void employee::render_emp(){
-    cout << "render employee = " << username << " hours = " << hours_current << "\n";
+
+    int user_in;
+
+    while(true){
+
+        cout << "Please select an Action\n";
+        cout << "1 : show user info\n";
+        cout << "2 : clock in/out\n";
+        cout << "3 : submit time card\n";
+        cout << "0 : exit\n";
+
+        cin >> user_in;
+
+        switch(user_in){
+
+                //show user info.
+            case 1:
+                cout << "Option 1 selected\n";
+                break;
+
+            case 2: 
+                //clock in
+                cout << "Option 2 selected\n";
+                break;
+
+            case 3:
+                //submit time card.
+                cout << "Option 3 selected\n";
+                break;
+
+            case 0:
+                //exit program
+                exit(0);
+                break;
+            default:
+                cout << "Invalid option";
+                break;
+
+        }
+
+    }
 }
 
 
 //will contain main loop and functions for manager login.
 void employee::render_man(){
-    cout << "render manager  = " << username << " hours = " << hours_current << "\n";
-}
+ int user_in;
+
+    while(true){
+
+        cout << "Please select an Action\n";
+        cout << "1 : show user info\n";
+        cout << "2 : clock in/out\n";
+        cout << "3 : submit time card\n";
+        cout << "4 : show team\n";
+        cout << "0 : exit\n";
+
+        cin >> user_in;
+
+        switch(user_in){
+
+                //show user info.
+            case 1:
+                cout << "Option 1 selected\n";
+                break;
+
+            case 2: 
+                //clock in
+                cout << "Option 2 selected\n";
+                break;
+
+            case 3:
+                //submit time card.
+                cout << "Option 3 selected\n";
+                break;
+
+            case 4:
+                cout << "Option 4 selected\n";
+                break;
+
+            case 0:
+                //exit program
+                exit(0);
+                break;
+            default:
+                cout << "Invalid option";
+                break;
+
+        }
+
+    }}
 
 void employee::render(){
 

@@ -26,6 +26,7 @@ int main(){
 
         //check to see if valid user.
         if(!current_user->is_valid){
+            cout << "Error incorrect login info\n";
             continue;
         }
 
