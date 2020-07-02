@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <iostream>
+#include "database.h"
 
 
 using namespace std;
@@ -13,19 +14,17 @@ class employee{
 
     public:
         //constructor
-        employee();
+        employee(int argc, char **argv);
         //destructor
         ~employee();
-
-        void load_info(int argc, char**argv);
 
         void render_emp();
         void render_man();
         void render();
 
-        bool is_valid = false;
-
     private:
+
+        //database db;
         //user information
 
         string username;

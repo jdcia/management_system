@@ -2,18 +2,8 @@
 
 
 //constructor
-employee::employee(){
-    return;
-}
-
-//destructor
-employee::~employee(){
-    return;
-}
-
-//loads information into the class
-void employee::load_info(int argc, char**argv){
-
+employee::employee(int argc, char** argv){
+    
     for(int i = 0; i < argc; i++){
 
         switch(i){
@@ -42,8 +32,11 @@ void employee::load_info(int argc, char**argv){
         is_manager = true;
     }
 
-    is_valid = true;
+}
 
+//destructor
+employee::~employee(){
+    return;
 }
 
 //will contain main loop and functions for employee login.
@@ -126,7 +119,7 @@ void employee::render_man(){
 
             case 4:
                 cout << "Option 4 selected\n";
-                break;
+                break; 
 
             case 0:
                 //exit program

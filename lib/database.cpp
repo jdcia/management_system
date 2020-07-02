@@ -10,7 +10,7 @@ database::database(string path){
     }
 }
 
-
+//clean this up
 int callback(void* data, int argc, char** argv, char** azColName) 
 { 
     int i; 
@@ -25,7 +25,7 @@ int callback(void* data, int argc, char** argv, char** azColName)
     // cout << "arg1 = " << argv[1] << "\n";
     // cout << "arg2 = " << argv[2] << "\n";
     if(argc > 4){
-        static_cast<employee *>(data)->load_info(argc, argv);
+        static_cast <sql_ret *>(data)->set(argc, argv);
     }
     
     //printf("\n"); 
@@ -33,18 +33,13 @@ int callback(void* data, int argc, char** argv, char** azColName)
 } 
 
 //checks to see if user exists;
-
-//ERROR if false
-//EMPLOYEE if employee
-//MANAGER if manager
-employee *database::auth_user(string username, string password){
+sql_ret *database::auth_user(string username, string password){
 
     string sql = "select * from employee where username = \"" + username + "\" and password = \"" + password + "\"";
 
-    employee *data = new employee();
+    sql_ret *data = new sql_ret();
 
     int rc = sqlite3_exec(db, sql.c_str(), callback, (void*)data, NULL); 
-  
     if (rc != SQLITE_OK) 
         cerr << "Error SELECT" << endl; 
 

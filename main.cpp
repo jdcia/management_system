@@ -1,5 +1,4 @@
 #include "./headers/main.h"
-#include "./headers/employee.h"
 
 int main(){
 
@@ -9,6 +8,10 @@ int main(){
     string username;
 
     string password;
+
+    employee *current_user;
+
+    sql_ret * data;
 
     while(true){
         //authenticate
@@ -22,13 +25,15 @@ int main(){
 
         cin >> password;
 
-        auto current_user = db->auth_user(username, password);
+        data = db->auth_user(username, password);
 
         //check to see if valid user.
-        if(!current_user->is_valid){
+        if(data->size == -1){
             cout << "Error incorrect login info\n";
             continue;
         }
+
+        current_user = new employee(data->size, data->data);
 
         //load userspace based on management level
         current_user->render();
