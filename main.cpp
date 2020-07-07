@@ -33,7 +33,7 @@ int main(){
             continue;
         }
 
-        current_user = new employee(*data);
+        current_user = new employee(*data, db);
 
         //load userspace based on management level
         current_user->render();

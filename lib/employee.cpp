@@ -2,7 +2,9 @@
 
 
 //constructor
-employee::employee(vector<string> data){
+employee::employee(vector<string> data, database *d){
+
+    db = d; //set database
     
     for(int i = 0; i < data.size(); i++){
 
@@ -53,6 +55,7 @@ void employee::render_emp(){
         cout << "1 : show user info\n";
         cout << "2 : clock in/out\n";
         cout << "3 : check current hours\n";
+        cout << "4 : shows current tasks\n";
         cout << "0 : exit\n";
 
         cin >> user_in;
@@ -74,6 +77,10 @@ void employee::render_emp(){
             case 3:
                 //submit time card.
                 cout << "Current hours selected\n";
+                break;
+
+            case 4:
+                cout << "show current tasks";
                 break;
 
             case 0:
@@ -101,6 +108,8 @@ void employee::render_man(){
         cout << "2 : clock in/out\n";
         cout << "3 : check current hours\n";
         cout << "4 : show team\n";
+        cout << "5 : show projects\n";
+        cout << "6 : add employee to project\n";
         cout << "0 : exit\n";
 
         cin >> user_in;
@@ -128,7 +137,12 @@ void employee::render_man(){
             case 4:
                 cout << "Option 4 selected\n";
                 break; 
-
+            case 5:
+                cout << "Option 5 selected\n";
+                break;
+            case 6:
+                cout << "Option 6 selected\n";
+                break;
             case 0:
                 //exit program
                 exit(0);
@@ -153,4 +167,21 @@ void employee::render(){
     }
 
 
+}
+
+void employee::clock_timecard(){
+    return;
+}
+void employee::check_curr(){
+    return;
+}
+void employee::show_projs(){
+    return;
+}
+
+void employee::show_team(){
+    return;
+}
+void employee::add_to_proj(){
+    return;
 }

@@ -14,7 +14,7 @@ class employee{
 
     public:
         //constructor
-        employee(vector<string> data);
+        employee(vector<string> data, database *d);
         //destructor
         ~employee();
 
@@ -24,7 +24,20 @@ class employee{
 
     private:
 
-        //database db;
+        //functions
+
+        //base
+        void clock_timecard();
+        void check_curr();
+        void show_projs();
+
+        //manager
+        void show_team();
+        void add_to_proj();
+
+        //variables
+
+        database *db;
         //user information
 
         string username;
