@@ -71,17 +71,17 @@ void employee::render_emp(){
 
             case 2: 
                 //clock in
-                cout << "Clock toggle selected\n";
+                clock_timecard();
                 break;
 
             case 3:
                 //submit time card.
-                cout << "Current hours selected\n";
+                check_curr();
                 break;
 
             case 4:
-                cout << "show current tasks";
-                break;
+                show_projs();
+                break; 
 
             case 0:
                 //exit program
@@ -126,22 +126,22 @@ void employee::render_man(){
 
             case 2: 
                 //clock in
-                cout << "Option 2 selected\n";
+                clock_timecard();
                 break;
 
             case 3:
                 //submit time card.
-                cout << "Option 3 selected\n";
+                check_curr();
                 break;
 
             case 4:
-                cout << "Option 4 selected\n";
+                show_projs();
                 break; 
             case 5:
-                cout << "Option 5 selected\n";
+                show_team();
                 break;
             case 6:
-                cout << "Option 6 selected\n";
+                add_to_proj();
                 break;
             case 0:
                 //exit program
@@ -170,18 +170,26 @@ void employee::render(){
 }
 
 void employee::clock_timecard(){
+    cout << "Clock timecard\n";
     return;
 }
+
 void employee::check_curr(){
+    cout << "check current hours\n";
     return;
 }
+
 void employee::show_projs(){
+    cout << "show current projects\n";
     return;
 }
 
 void employee::show_team(){
+    cout << "show team members\n";
     return;
 }
+
 void employee::add_to_proj(){
+    cout << "add employee to project\n";
     return;
 }

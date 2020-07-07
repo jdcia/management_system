@@ -24,7 +24,7 @@ int callback(void* data, int argc, char** argv, char** azColName)
     // cout << "argc = " << argc << "\n";
     // cout << "arg1 = " << argv[1] << "\n";
     // cout << "arg2 = " << argv[2] << "\n";
-    if(argc > 4){
+    if(argc > 0){
         for (i = 0; i < argc; i++) { 
             static_cast <vector<string> *>(data)->push_back(string(argv[i]));
         }
@@ -36,9 +36,9 @@ int callback(void* data, int argc, char** argv, char** azColName)
 } 
 
 //checks to see if user exists;
-vector<string> *database::auth_user(string username, string password){
+vector<string> *database::exec_statement(string sql){
 
-    string sql = "select * from employee where username = \"" + username + "\" and password = \"" + password + "\"";
+    //string sql = "select * from employee where username = \"" + username + "\" and password = \"" + password + "\"";
 
     vector<string> *data = new vector<string>;
 

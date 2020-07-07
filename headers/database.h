@@ -27,7 +27,7 @@ class database {
         //0 if false
         //1 if employee
         //2 if manager
-        vector<string> *auth_user(string username, string password); //checks if user exists
+        vector<string> *exec_statement(string sql); //checks if user exists
 
         void clock_user(int emp_id);
 

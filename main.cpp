@@ -25,7 +25,7 @@ int main(){
 
         cin >> password;
 
-        data = db->auth_user(username, password);
+        data = db->exec_statement("select * from employee where username = \"" + username + "\" and password = \"" + password + "\"");
 
         //check to see if valid user.
         if(data->empty()){
