@@ -6,13 +6,11 @@ employee::employee(vector<string> data, database *d){
 
     db = d; //set database
     
+    //process employee data
     for(int i = 0; i < data.size(); i++){
-
-        //cout << argv[i] << "\n";
 
         switch(i){
             case 0:
-                //cout << "asdf" << (string)argv[i] << "\n";
                 username = data[i];
                 break;           
             case 1:
@@ -31,8 +29,8 @@ employee::employee(vector<string> data, database *d){
         }
 
     }
-    //cout << id << " " << manager_id << "\n";
 
+    //check if manager
     if(id == manager_id){
         is_manager = true;
     }
@@ -51,6 +49,7 @@ void employee::render_emp(){
 
     while(true){
 
+        //main selection screen
         cout << "Please select an Action\n";
         cout << "1 : show user info\n";
         cout << "2 : clock in/out\n";
@@ -58,8 +57,10 @@ void employee::render_emp(){
         cout << "4 : shows current tasks\n";
         cout << "0 : exit\n";
 
+        //get action input
         cin >> user_in;
 
+        //preform task based on input
         switch(user_in){
 
                 //show user info.
@@ -99,10 +100,11 @@ void employee::render_emp(){
 
 //will contain main loop and functions for manager login.
 void employee::render_man(){
- int user_in;
+    int user_in;
 
     while(true){
 
+        //manager action selection list.
         cout << "Please select an Action\n";
         cout << "1 : show user info\n";
         cout << "2 : clock in/out\n";
@@ -112,8 +114,10 @@ void employee::render_man(){
         cout << "6 : add employee to project\n";
         cout << "0 : exit\n";
 
+        //get user input
         cin >> user_in;
 
+        //preform task based on input
         switch(user_in){
 
                 //show user info.

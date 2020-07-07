@@ -23,13 +23,8 @@ class database {
 
         database(string path);
 
-        //checks to see if user exists;
-        //0 if false
-        //1 if employee
-        //2 if manager
+        //execs statement
         vector<string> *exec_statement(string sql); //checks if user exists
-
-        void clock_user(int emp_id);
 
         //decontructor
 
