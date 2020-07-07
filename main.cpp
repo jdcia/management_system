@@ -11,7 +11,7 @@ int main(){
 
     employee *current_user;
 
-    sql_ret * data;
+    vector<string> * data;
 
     while(true){
         //authenticate
@@ -28,12 +28,12 @@ int main(){
         data = db->auth_user(username, password);
 
         //check to see if valid user.
-        if(data->size == -1){
+        if(data->empty()){
             cout << "Error incorrect login info\n";
             continue;
         }
 
-        current_user = new employee(data->size, data->data);
+        current_user = new employee(*data);
 
         //load userspace based on management level
         current_user->render();

@@ -14,7 +14,7 @@ class employee{
 
     public:
         //constructor
-        employee(int argc, char **argv);
+        employee(vector<string> data);
         //destructor
         ~employee();
 

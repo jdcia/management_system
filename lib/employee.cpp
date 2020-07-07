@@ -2,25 +2,28 @@
 
 
 //constructor
-employee::employee(int argc, char** argv){
+employee::employee(vector<string> data){
     
-    for(int i = 0; i < argc; i++){
+    for(int i = 0; i < data.size(); i++){
+
+        //cout << argv[i] << "\n";
 
         switch(i){
             case 0:
-                username = argv[i];
+                //cout << "asdf" << (string)argv[i] << "\n";
+                username = data[i];
                 break;           
             case 1:
-                id = atoi(argv[i]);
+                id = atoi(data[i].c_str());
                 break;
             case 2:
-                manager_id = atoi(argv[i]);
+                manager_id = atoi(data[i].c_str());
                 break;
             case 3:
-                password = argv[i];
+                password = data[i];
                 break;
             case 4:
-                hours_current = atoi(argv[i]);
+                hours_current = atoi(data[i].c_str());
                 break;
 
         }
@@ -49,7 +52,7 @@ void employee::render_emp(){
         cout << "Please select an Action\n";
         cout << "1 : show user info\n";
         cout << "2 : clock in/out\n";
-        cout << "3 : submit time card\n";
+        cout << "3 : check current hours\n";
         cout << "0 : exit\n";
 
         cin >> user_in;
@@ -58,17 +61,19 @@ void employee::render_emp(){
 
                 //show user info.
             case 1:
-                cout << "Option 1 selected\n";
+                cout << "Name: " << username << "\n";
+                cout << "ID: " << id << "\n";
+                cout << "Manager ID:" << manager_id << "\n";
                 break;
 
             case 2: 
                 //clock in
-                cout << "Option 2 selected\n";
+                cout << "Clock toggle selected\n";
                 break;
 
             case 3:
                 //submit time card.
-                cout << "Option 3 selected\n";
+                cout << "Current hours selected\n";
                 break;
 
             case 0:
@@ -94,7 +99,7 @@ void employee::render_man(){
         cout << "Please select an Action\n";
         cout << "1 : show user info\n";
         cout << "2 : clock in/out\n";
-        cout << "3 : submit time card\n";
+        cout << "3 : check current hours\n";
         cout << "4 : show team\n";
         cout << "0 : exit\n";
 
@@ -104,7 +109,10 @@ void employee::render_man(){
 
                 //show user info.
             case 1:
-                cout << "Option 1 selected\n";
+                cout << "Name: " << username << "\n";
+                cout << "ID: " << id << "\n";
+                cout << "Manager ID:" << manager_id << "\n";
+
                 break;
 
             case 2: 

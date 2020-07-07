@@ -25,7 +25,10 @@ int callback(void* data, int argc, char** argv, char** azColName)
     // cout << "arg1 = " << argv[1] << "\n";
     // cout << "arg2 = " << argv[2] << "\n";
     if(argc > 4){
-        static_cast <sql_ret *>(data)->set(argc, argv);
+        for (i = 0; i < argc; i++) { 
+            static_cast <vector<string> *>(data)->push_back(string(argv[i]));
+        }
+        
     }
     
     //printf("\n"); 
@@ -33,11 +36,11 @@ int callback(void* data, int argc, char** argv, char** azColName)
 } 
 
 //checks to see if user exists;
-sql_ret *database::auth_user(string username, string password){
+vector<string> *database::auth_user(string username, string password){
 
     string sql = "select * from employee where username = \"" + username + "\" and password = \"" + password + "\"";
 
-    sql_ret *data = new sql_ret();
+    vector<string> *data = new vector<string>;
 
     int rc = sqlite3_exec(db, sql.c_str(), callback, (void*)data, NULL); 
     if (rc != SQLITE_OK) 
