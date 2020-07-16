@@ -4,7 +4,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <iostream>
+#include <sstream>
 #include "database.h"
+#include <ctime>
 
 
 using namespace std;
@@ -30,6 +32,7 @@ class employee{
         void clock_timecard();
         void check_curr();
         void show_projs();
+        string get_date();
 
         //manager
         void show_team();
