@@ -11,6 +11,31 @@
 
 using namespace std;
 
+struct date{
+
+    int month;
+    int day;
+    int year;
+
+    date(int a , int b, int c){
+            year = a;
+            month = b;
+            day = c;
+    }
+
+    string str(){
+
+        stringstream ss;
+
+        ss << month << "-" << day << "-" << year;
+
+        return ss.str();
+    }
+
+
+
+};
+
 class employee{
 
 
@@ -32,7 +57,7 @@ class employee{
         void clock_timecard();
         void check_curr();
         void show_projs();
-        string get_date();
+        date get_date();
 
         //manager
         void show_team();
