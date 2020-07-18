@@ -175,9 +175,11 @@ void employee::render(){
 
 void employee::clock_timecard(){
     cout << "Clock timecard\n";
-    date res = get_date();
+    cur_date cur_time = cur_date();
 
-    cout << "current date = " << res.str() << "\n";
+    cout << "current date = " << cur_time.get_date() << "\n";
+    cout << "current time = " << cur_time.get_time() << "\n";
+
 
     return;
 }
@@ -200,19 +202,4 @@ void employee::show_team(){
 void employee::add_to_proj(){
     cout << "add employee to project\n";
     return;
-}
-
-date employee::get_date(){
-
-    std::time_t t = std::time(0);   // get time now
-    std::tm* now = std::localtime(&t);
-
-    // stringstream result;
-
-    // result << (now->tm_year + 1900) << '-' 
-    //      << (now->tm_mon + 1) << '-'
-    //      <<  now->tm_mday
-    //      << "\n";
-
-    return date((now->tm_year + 1900), now->tm_mon + 1, now->tm_mday);
 }

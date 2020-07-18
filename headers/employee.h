@@ -4,37 +4,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <iostream>
-#include <sstream>
 #include "database.h"
-#include <ctime>
-
+#include "date.h"
 
 using namespace std;
 
-struct date{
-
-    int month;
-    int day;
-    int year;
-
-    date(int a , int b, int c){
-            year = a;
-            month = b;
-            day = c;
-    }
-
-    string str(){
-
-        stringstream ss;
-
-        ss << month << "-" << day << "-" << year;
-
-        return ss.str();
-    }
-
-
-
-};
 
 class employee{
 
@@ -57,11 +31,13 @@ class employee{
         void clock_timecard();
         void check_curr();
         void show_projs();
-        date get_date();
 
         //manager
         void show_team();
         void add_to_proj();
+
+        //cur_time
+        cur_date cur_time();
 
         //variables
 
