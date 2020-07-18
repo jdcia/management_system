@@ -8,9 +8,9 @@ struct cur_date{
     int day;
     int year;
     
-    int hour;
-    int min;
-    int sec;
+    double hour;
+    double min;
+    double sec;
 
     //begins with current date.
     cur_date(){
@@ -40,7 +40,7 @@ struct cur_date{
 
         stringstream ss;
 
-        ss << hour << ":" << min << ":" << sec;
+        ss << hour + (min / 60) + (sec / 360);
 
         return ss.str();
 
