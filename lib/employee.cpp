@@ -185,14 +185,18 @@ void employee::clock_timecard(){
     //check to see if user clocked in today. If so update with clockout time.
 
     //retrieve current users.
-    vector<string> * data = db->exec_statement(""); //insert statement to time cards for todays date.
+    vector<string> * data = db->exec_statement("select * from timecard where emp_id = " + to_string(id) + " and date = \"" + cur_time.get_date() + "\" and clock_out is NULL"); //insert statement to time cards for todays date.
+
 
     if(data->empty()){
         //create new time card
+        //choose project to change too
+        cout << "create new timecard\n";
         data = db->exec_statement(""); //insert statement to create new time card;
     }
     else{
         //update timecards with end date.
+        cout << "Update timecard\n";
         data = db->exec_statement(""); //update timecard for todays date. 
         //NOTE: This will override existing end date
     }

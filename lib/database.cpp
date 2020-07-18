@@ -20,7 +20,11 @@ int callback(void* data, int argc, char** argv, char** azColName)
     if(argc > 0){
         //add each piece of data return from statement to string vector.
         for (int i = 0; i < argc; i++) { 
-            static_cast <vector<string> *>(data)->push_back(string(argv[i]));
+            if(argv[i] != NULL)
+                static_cast <vector<string> *>(data)->push_back(string(argv[i]));
+            else
+                static_cast <vector<string> *>(data)->push_back("NULL");
+            
         }
         
     }
