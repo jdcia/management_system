@@ -175,11 +175,27 @@ void employee::render(){
 
 void employee::clock_timecard(){
     cout << "Clock timecard\n";
+
+    //get current time
     cur_date cur_time = cur_date();
 
     cout << "current date = " << cur_time.get_date() << "\n";
     cout << "current time = " << cur_time.get_time() << "\n";
 
+    //check to see if user clocked in today. If so update with clockout time.
+
+    //retrieve current users.
+    vector<string> * data = db->exec_statement(""); //insert statement to time cards for todays date.
+
+    if(data->empty()){
+        //create new time card
+        data = db->exec_statement(""); //insert statement to create new time card;
+    }
+    else{
+        //update timecards with end date.
+        data = db->exec_statement(""); //update timecard for todays date. 
+        //NOTE: This will override existing end date
+    }
 
     return;
 }
