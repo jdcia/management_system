@@ -191,14 +191,13 @@ void employee::clock_timecard(){
     if(data->empty()){
         //create new time card
         //choose project to change too
-        cout << "create new timecard\n";
-        data = db->exec_statement(""); //insert statement to create new time card;
+        //cout << "create new timecard\n";
+        data = db->exec_statement("insert into timecard (emp_id, proj_id, clock_in, clock_out, date, comments) VALUES (" + to_string(id) + ", " + to_string(manager_id) + ", " + cur_time.get_time() + ", NULL, \"" + cur_time.get_date() + "\", NULL)"); //insert statement to create new time card;
     }
     else{
         //update timecards with end date.
-        cout << "Update timecard\n";
-        data = db->exec_statement(""); //update timecard for todays date. 
-        //NOTE: This will override existing end date
+        //cout << "Update timecard\n";
+        data = db->exec_statement("update timecard set clock_out = " + cur_time.get_time() + " where emp_id = " + to_string(id) + " and date = \"" + cur_time.get_date() + "\" and clock_out is NULL"); //update timecard for todays date. 
     }
 
     return;
