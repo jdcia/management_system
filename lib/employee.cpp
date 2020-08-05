@@ -65,9 +65,7 @@ void employee::render_emp(){
 
                 //show user info.
             case 1:
-                cout << "Name: " << username << "\n";
-                cout << "ID: " << id << "\n";
-                cout << "Manager ID:" << manager_id << "\n";
+                show_info();
                 break;
 
             case 2: 
@@ -119,13 +117,10 @@ void employee::render_man(){
 
         //preform task based on input
         switch(user_in){
-
-                //show user info.
+                
             case 1:
-                cout << "Name: " << username << "\n";
-                cout << "ID: " << id << "\n";
-                cout << "Manager ID:" << manager_id << "\n";
-
+                //show user info.
+                show_info();
                 break;
 
             case 2: 
@@ -171,6 +166,13 @@ void employee::render(){
     }
 
 
+}
+
+void employee::show_info(){
+    
+    cout << "Name: " << username << "\n";
+    cout << "ID: " << id << "\n";
+    cout << "Manager ID:" << manager_id << "\n";
 }
 
 void employee::clock_timecard(){

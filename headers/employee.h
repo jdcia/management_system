@@ -28,6 +28,7 @@ class employee{
         //functions
 
         //base
+        void show_info();
         void clock_timecard();
         void check_curr();
         void show_projs();
