@@ -43,17 +43,19 @@ class employee{
         //variables
 
         database *db;
-        //user information
 
+        //login info
         string username;
         string password;
 
+        //user/manager info
         int id;
         int manager_id;
+        bool is_manager = false;
 
+        //hours
         int hours_current;
 
-        bool is_manager = false;
         
 
 };

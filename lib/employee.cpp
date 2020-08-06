@@ -63,8 +63,8 @@ void employee::render_emp(){
         //preform task based on input
         switch(user_in){
 
-                //show user info.
             case 1:
+                //show user info.
                 show_info();
                 break;
 
@@ -173,6 +173,7 @@ void employee::show_info(){
     cout << "Name: " << username << "\n";
     cout << "ID: " << id << "\n";
     cout << "Manager ID:" << manager_id << "\n";
+
 }
 
 void employee::clock_timecard(){
@@ -192,8 +193,7 @@ void employee::clock_timecard(){
 
     if(data->empty()){
         //create new time card
-        //choose project to change too
-        //cout << "create new timecard\n";
+        //choose project to change too //FIX THIS
         data = db->exec_statement("insert into timecard (emp_id, proj_id, clock_in, clock_out, date, comments) VALUES (" + to_string(id) + ", " + to_string(manager_id) + ", " + cur_time.get_time() + ", NULL, \"" + cur_time.get_date() + "\", NULL)"); //insert statement to create new time card;
     }
     else{
@@ -207,20 +207,57 @@ void employee::clock_timecard(){
 
 void employee::check_curr(){
     cout << "check current hours\n";
+
+    
+    //get all complete time cards for today.
+    vector<string> * data = db->exec_statement("");
+
+    //replace partial time cards with current time.
+
+    //Calculate time.
+
+    
+
     return;
 }
 
 void employee::show_projs(){
     cout << "show current projects\n";
+
+    //insert select statement to get current projects
+    vector<string> * data = db->exec_statement("");
+
+    //show projects
+    cout << "Current Projects:\n";
+    
+    for(auto i : *data){
+        cout << i << "\n";
+    }
+
     return;
 }
 
 void employee::show_team(){
     cout << "show team members\n";
+
+    //insert select statement to get team members.
+    vector<string> * data = db->exec_statement("");
+
+    //show members
+    cout << "Team Members:\n";
+
+    for(auto i : *data){
+        cout << i << "\n";
+    }
+
     return;
 }
 
 void employee::add_to_proj(){
     cout << "add employee to project\n";
+
+    //add insert statement to insert new project.
+    vector<string> * data = db->exec_statement("");
+
     return;
 }
